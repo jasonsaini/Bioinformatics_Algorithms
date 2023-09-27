@@ -1,0 +1,19 @@
+function find_clumps(genome, L, t)
+    clumps = empty set
+    for i = 0 to len(genome) - L do
+        window = substring of genome from i to i + L
+        freqs = empty dictionary
+        for j = 0 to len(window) - L do
+            kmer = substring of window from j to j + L
+            if kmer not in freqs then
+                freqs[kmer] = 0
+            freqs[kmer] += 1
+        end for
+        for kmer, freq in freqs do
+            if count >= t then
+                add kmer to clumps
+            end if
+        end for
+    end for
+    return clumps
+end function
